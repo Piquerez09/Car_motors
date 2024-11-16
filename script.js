@@ -18,7 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: {
                     display: true,
                     text: 'Comparativo de Potência entre os Motores'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw + ' cv';
+                        }
+                    }
+                }
+            },
+            hover: {
+                onHover: function(e) {
+                    const point = comparativoGrafico.getElementAtEvent(e);
+                    if (point.length) {
+                        e.target.style.cursor = 'pointer'; // Muda o cursor para interatividade
+                    } else {
+                        e.target.style.cursor = 'default';
+                    }
                 }
             }
-        },
+        }
+    });
 });
