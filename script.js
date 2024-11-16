@@ -20,5 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
                     text: 'Comparativo de Potência entre os Motores'
                 }
             }
-        });
+        },
 });
