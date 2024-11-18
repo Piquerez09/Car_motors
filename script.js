@@ -1,111 +1,75 @@
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
-    // Função para iniciar o Quiz
-    function startQuiz() {
-        const questions = [
-            {
-                question: "Qual motor é mais usado em carros esportivos?",
-                options: ["V4", "V6", "V8", "V12"],
-                answer: 2
-            },
-            {
-                question: "Qual é o motor mais potente?",
-                options: ["V6", "V8", "V10", "V12"],
-                answer: 3
-            },
-            {
-                question: "Qual carro famoso usa o motor V10?",
-                options: ["Lamborghini Gallardo", "Chevrolet Camaro", "Honda Civic", "BMW X5"],
-                answer: 0
-            },
-            // 26 Perguntas adicionais
-            {
-                question: "Qual motor é o mais econômico?",
-                options: ["V4", "V6", "V8", "V12"],
-                answer: 0
-            },
-            {
-                question: "Qual motor foi usado no Ferrari F12?",
-                options: ["V6", "V8", "V10", "V12"],
-                answer: 3
-            },
-            {
-                question: "Qual motor tem o maior torque?",
-                options: ["V6", "V8", "V10", "V12"],
-                answer: 3
-            },
-            // Continue adicionando perguntas conforme necessário
-        ];
+    // Perguntas e Respostas
+    const questions = [
+        // Aqui entram as 30 perguntas como mostrado nos exemplos anteriores
+        // Para simplificação, apenas algumas perguntas estão listadas aqui
+        {
+            question: "Qual é o motor mais comum em carros compactos?",
+            options: ["V4", "V6", "V8", "V12"],
+            answer: 0
+        },
+        {
+            question: "Qual motor é mais eficiente para carros esportivos?",
+            options: ["V4", "V6", "V8", "V12"],
+            answer: 2
+        },
+        {
+            question: "Qual é o motor mais potente?",
+            options: ["V6", "V8", "V10", "V12"],
+            answer: 3
+        }
+    ];
 
+    let userAnswers = [];
+
+    const quizContainer = document.getElementById('quiz-container');
+
+    // Renderiza o quiz no site
+    function renderQuiz() {
+        questions.forEach((q, index) => {
+            const questionHTML = `
+                <div class="question">
+                    <h3>${q.question}</h3>
+                    <div>
+                        ${q.options.map((option, i) => `
+                            <label>
+                                <input type="radio" name="question${index}" value="${i}">${option}
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            quizContainer.innerHTML += questionHTML;
+        });
+    }
+
+    // Função para submeter as respostas
+    function submitQuiz() {
+        userAnswers = [];
         let score = 0;
 
         questions.forEach((q, index) => {
-            const userAnswer = prompt(`${q.question}\n${q.options.join("\n")}`);
-            if (userAnswer === q.options[q.answer]) {
-                score++;
+            const selected = document.querySelector(`input[name="question${index}"]:checked`);
+            if (selected) {
+                const answer = parseInt(selected.value);
+                userAnswers.push(answer);
+                if (answer === q.answer) {
+                    score++;
+                }
+            } else {
+                userAnswers.push(-1); // Nenhuma resposta
             }
         });
 
-        alert(`Seu resultado é ${score} de ${questions.length}`);
-
-        // Se acertar tudo, animação de confetes
+        // Exibe o resultado
         if (score === questions.length) {
-            confetti();
+            alert("Parabéns! Você acertou todas as perguntas!");
+            confetti.start(); // Confetes para quem acertou tudo
         } else {
-            alert("Que pena, você errou. Dê uma olhada no site para melhorar seus conhecimentos.");
+            alert(`Você acertou ${score} de ${questions.length}. Tente novamente!`);
         }
     }
 
-    // Função para gerar confetes
-    function confetti() {
-        let count = 200;
-        let defaults = {
-            origin: { y: 0.7 }
-        };
-        while (count--) {
-            confetti({
-                ...defaults,
-                particleCount: Math.floor(Math.random() * 5 + 5),
-                angle: Math.random() * 360,
-                spread: Math.random() * 30,
-                startVelocity: 30,
-                drift: Math.random() * 5,
-                ticks: 60,
-                color: 'gold',
-            });
-        }
-    }
-
-    // 3D Carro - Use Three.js para renderizar um carro 3D (Ferrari ou Lamborghini)
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('3d-car-canvas') });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    // Carregar modelo 3D do carro
-    const loader = new THREE.GLTFLoader();
-    loader.load('modelo_carro_lamborghini.glb', (gltf) => {
-        const car = gltf.scene;
-        scene.add(car);
-        car.scale.set(2, 2, 2);
-        car.position.set(0, 0, -5);
-
-        // Animação
-        function animate() {
-            requestAnimationFrame(animate);
-            car.rotation.y += 0.01; // Gira o carro
-            renderer.render(scene, camera);
-        }
-
-        animate();
-    });
-
-    camera.position.z = 5;
-
-    // Adicionando eventos para ajustar o tamanho da tela
-    window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-    });
+    renderQuiz();
 });

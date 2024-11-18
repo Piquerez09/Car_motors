@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="O Deus do Mundo Automotivo. Explore os motores e descubra o poder do V4 ao V12 com o brilho celestial de um arcanjo.">
+    <meta name="description" content="MotorPower - O Deus dos Motores. Explore os motores e descubra o poder do V4 ao V12 com o brilho celestial de um arcanjo.">
     <meta name="author" content="MotorPower">
     <meta property="og:title" content="MotorPower - O Melhor do Mundo Automotivo" />
     <meta property="og:description" content="Explore os motores mais icônicos e suas características. Descubra o que há de melhor no mundo automotivo." />
@@ -39,59 +39,61 @@
 
     <section id="sobre" class="section">
         <h2>Sobre os Motores Celestiais</h2>
-        <p>Descubra o equilíbrio entre potência e eficiência. O V4 ao V12 são os escolhidos pela engenharia divina.</p>
+        <p>Explore a magia por trás dos motores V4, V6, V8, V10 e V12 e descubra o que faz cada um ser único e especial.</p>
     </section>
 
-    <!-- Seções para os motores V4, V6, etc. -->
     <section id="v4" class="section motor-section">
         <h2>Motor V4</h2>
-        <p>Compacto e eficiente, o motor V4 é conhecido por sua excelente relação entre desempenho e economia de combustível. Ideal para carros de médio porte e motos.</p>
+        <p>Compacto e eficiente, o motor V4 é ideal para veículos mais leves e ágeis. Sua configuração permite melhor aproveitamento de espaço e excelente desempenho em carros de entrada.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/seu_video_v4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <section id="v6" class="section motor-section">
         <h2>Motor V6</h2>
-        <p>Com seis cilindros dispostos em forma de "V", o motor V6 é utilizado em carros esportivos e sedãs de luxo. Equilíbrio entre potência e consumo de combustível.</p>
+        <p>Com 6 cilindros dispostos em "V", o motor V6 oferece um excelente equilíbrio entre desempenho e eficiência, sendo amplamente usado em carros esportivos e sedans de luxo.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/seu_video_v6" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <section id="v8" class="section motor-section">
         <h2>Motor V8</h2>
-        <p>Potente e robusto, o V8 é o motor favorito de carros de alto desempenho, como muscle cars e supercarros. Aceleração impressionante e grande torque.</p>
+        <p>O motor V8 é conhecido pelo seu desempenho monstruoso e som inconfundível. É perfeito para carros esportivos de alta performance, oferecendo potência sem igual.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/seu_video_v8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <section id="v10" class="section motor-section">
         <h2>Motor V10</h2>
-        <p>Utilizado em carros de alta performance como o Lamborghini Gallardo, o motor V10 oferece um equilíbrio entre o V8 e o V12, com grande capacidade de aceleração.</p>
+        <p>Com 10 cilindros, o motor V10 oferece um desempenho superior, perfeito para carros de corrida e superesportivos. Ele entrega potência de uma forma suave e eficiente.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/seu_video_v10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <section id="v12" class="section motor-section">
         <h2>Motor V12</h2>
-        <p>O motor V12 é a joia da engenharia automotiva, presente nos supercarros de luxo como Ferrari, Lamborghini e outros. Potência extrema, som inconfundível e aceleração brutal.</p>
-    </section>
-
-    <!-- 3D Car View -->
-    <section id="carro-3d" class="section">
-        <h2>Explore o Carro em 3D</h2>
-        <div id="3d-car-container">
-            <canvas id="3d-car-canvas"></canvas>
+        <p>Considerado o auge da engenharia automotiva, o motor V12 é usado em supercarros e hipercarros, oferecendo desempenho impressionante e um som inconfundível que encanta os amantes de carros.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/seu_video_v12" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
 
-    <!-- Quiz Interativo -->
     <section id="quiz" class="section">
-        <h2>Quiz dos Carros Divinos</h2>
-        <p>Teste seus conhecimentos sobre carros e motores no reino celestial dos automóveis!</p>
-        <div id="quiz-container">
-            <button class="quiz-button" onclick="startQuiz()">Começar Quiz</button>
-        </div>
+        <h2>Quiz dos Carros Celestiais</h2>
+        <p>Teste seus conhecimentos sobre motores e carros!</p>
+        <div id="quiz-container"></div>
+        <button id="submit" onclick="submitQuiz()">Enviar Respostas</button>
     </section>
 
     <footer>
         <p>&copy; 2024 MotorPower. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script> <!-- Biblioteca 3D -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script> <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
