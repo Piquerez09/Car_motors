@@ -1,85 +1,126 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Carregar modelos 3D de carros
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('carro-3d-container') });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+/* Reset e fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    const loader = new THREE.GLTFLoader();
-    loader.load('assets/lamborghini.glb', (gltf) => {
-        scene.add(gltf.scene);
-        gltf.scene.scale.set(0.7, 0.7, 0.7);  // Ajuste de escala
-    });
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #FFF;
+    padding-top: 100px;
+}
 
-    const light = new THREE.AmbientLight(0x404040, 2);
-    scene.add(light);
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 5, 5).normalize();
-    scene.add(directionalLight);
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    z-index: 1000;
+}
 
-    camera.position.z = 5;
+.navbar .logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    letter-spacing: 3px;
+}
 
-    function animate() {
-        requestAnimationFrame(animate);
-        scene.rotation.y += 0.005;
-        renderer.render(scene, camera);
-    }
-    animate();
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+}
 
-    // Função para iniciar o Quiz
-    function startQuiz() {
-        const questions = [
-            {
-                question: "Qual motor é mais usado em carros esportivos?",
-                options: ["V4", "V6", "V8", "V12"],
-                answer: 2
-            },
-            {
-                question: "Qual é o motor mais potente?",
-                options: ["V6", "V8", "V10", "V12"],
-                answer: 3
-            },
-            {
-                question: "Qual carro famoso usa o motor V10?",
-                options: ["Lamborghini Gallardo", "Chevrolet Camaro", "Honda Civic", "BMW X5"],
-                answer: 0
-            },
-            {
-                question: "Qual o motor mais comum em carros de luxo?",
-                options: ["V4", "V6", "V8", "V12"],
-                answer: 1
-            }
-        ];
+.nav-links li {
+    margin: 0 20px;
+}
 
-        let score = 0;
+.nav-links li a {
+    font-size: 1.2rem;
+    color: white;
+    transition: all 0.3s ease;
+}
 
-        questions.forEach((q) => {
-            const userAnswer = prompt(`${q.question}\n${q.options.join("\n")}`);
-            if (userAnswer === q.options[q.answer]) {
-                score++;
-            }
-        });
+.nav-links li a:hover {
+    color: #FFD700;
+}
 
-        if (score === questions.length) {
-            showConfetti();
-            alert(`Parabéns! Você acertou todas as perguntas.`);
-        } else {
-            alert(`Que pena! Você acertou ${score} de ${questions.length}. Dê uma olhada no site para melhorar seus conhecimentos.`);
-        }
-    }
+/* Hero Section */
+.hero {
+    background: url('assets/hero-background.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
 
-    // Função para mostrar confetes
-    function showConfetti() {
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        document.body.appendChild(confetti);
-        setTimeout(() => {
-            confetti.remove();
-        }, 10000);
-    }
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
 
-    // Iniciar o Quiz ao clicar no botão
-    document.querySelector('.quiz-button').addEventListener('click', startQuiz);
-});
+.hero-content p {
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Seções */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+    background: #1e1e1e;
+}
+
+/* Animação de Carros 3D */
+#carro-3d-container {
+    width: 100%;
+    height: 500px;
+    margin: 50px auto;
+}
+
+/* Botão de Quiz */
+.quiz-button {
+    padding: 20px 40px;
+    background-color: #FFD700;
+    color: #121212;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.quiz-button:hover {
+    background-color: #FFC107;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000;
+    color: #FFD700;
+}
+
+/* Efeitos de Confete */
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
