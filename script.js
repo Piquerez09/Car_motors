@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const point = comparativoGrafico.getElementAtEvent(e);
                     if (point.length) {
                         e.target.style.cursor = 'pointer'; // Muda o cursor para interatividade
+                        const motor = point[0].index; // Pegando o índice do motor
+                        tocarAudio(motor); // Função para tocar o som
                     } else {
                         e.target.style.cursor = 'default';
                     }
@@ -39,4 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Função para tocar o som do motor
+    function tocarAudio(motorIndex) {
+        const audios = [
+            new Audio('v4.mp3'), // Som do motor V4
+            new Audio('v6.mp3'), // Som do motor V6
+            new Audio('v8.mp3'), // Som do motor V8
+            new Audio('v10.mp3'), // Som do motor V10
+            new Audio('v12.mp3')  // Som do motor V12
+        ];
+        audios[motorIndex].play();
+    }
 });
