@@ -106,41 +106,47 @@ header {
 
 /* Parallax effect */
 .parallax {
-    background: url('https://www.example.com/parallax-image.jpg') no-repeat fixed center;
+    background: url('https://www.example.com/parallax-bg.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     padding: 6rem 2rem;
-    animation: fadeIn 2s ease-out;
 }
 
-footer {
-    background-color: #222;
+#quiz-container {
     text-align: center;
-    padding: 1rem;
     margin-top: 3rem;
-    font-size: 1rem;
-}
-
-footer p {
-    color: #aaa;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
 }
 
 .quiz-button {
-    padding: 1rem 2rem;
+    padding: 1.2rem 2.5rem;
     background-color: #f8b400;
     border: none;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #333;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .quiz-button:hover {
     background-color: #e67e22;
+    transform: scale(1.05);
+}
+
+/* 3D Car Container */
+#carro-3d {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#3d-car-container {
+    width: 100%;
+    height: 500px;
+    margin-top: 3rem;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
