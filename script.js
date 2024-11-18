@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Carregar o modelo 3D da Lamborghini
+    // Carregar modelos 3D de carros
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('3d-car-canvas') });
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('carro-3d-container') });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
     const loader = new THREE.GLTFLoader();
-    loader.load('models/lamborghini.glb', (gltf) => {
+    loader.load('assets/lamborghini.glb', (gltf) => {
         scene.add(gltf.scene);
-        gltf.scene.scale.set(0.5, 0.5, 0.5);  // Ajuste de escala do modelo
+        gltf.scene.scale.set(0.7, 0.7, 0.7);  // Ajuste de escala
     });
 
     const light = new THREE.AmbientLight(0x404040, 2);
@@ -70,16 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Função de confetes
+    // Função para mostrar confetes
     function showConfetti() {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
         document.body.appendChild(confetti);
         setTimeout(() => {
             confetti.remove();
-        }, 10000); // Confetes por 10 segundos
+        }, 10000);
     }
 
-    // Inicia o Quiz
+    // Iniciar o Quiz ao clicar no botão
     document.querySelector('.quiz-button').addEventListener('click', startQuiz);
 });
