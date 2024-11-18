@@ -1,15 +1,17 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-    // Perguntas e Respostas do Quiz
+    const quizButton = document.getElementById('quiz-button');
+    const quizSection = document.getElementById('quiz');
+    const quizContainer = document.getElementById('quiz-container');
+    const submitButton = document.getElementById('submit');
+    const quizResult = document.getElementById('quiz-result');
+    const scoreDisplay = document.getElementById('quiz-score');
+    const confettiContainer = document.getElementById('confetti');
+    
+    // Perguntas do Quiz
     const questions = [
-        // Suas 30 perguntas aqui (mantendo o formato que já definimos)
         {
-            question: "Qual é o motor mais comum em carros compactos?",
-            options: ["V4", "V6", "V8", "V12"],
-            answer: 0
-        },
-        {
-            question: "Qual motor é mais eficiente para carros esportivos?",
+            question: "Qual é o motor mais comum em carros esportivos?",
             options: ["V4", "V6", "V8", "V12"],
             answer: 2
         },
@@ -18,15 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
             options: ["V6", "V8", "V10", "V12"],
             answer: 3
         },
-        // ... outras 27 perguntas aqui
+        {
+            question: "Qual motor é usado no famoso Ferrari 488 GTB?",
+            options: ["V6", "V8", "V10", "V12"],
+            answer: 1
+        },
+        {
+            question: "Qual motor é ideal para carros de corrida?",
+            options: ["V6", "V8", "V10", "V12"],
+            answer: 2
+        },
+        // Adicione até 30 perguntas aqui
     ];
 
     let userAnswers = [];
 
-    const quizContainer = document.getElementById('quiz-container');
-
-    // Renderiza as perguntas do quiz
+    // Função para renderizar o quiz
     function renderQuiz() {
+        quizContainer.innerHTML = '';
         questions.forEach((q, index) => {
             const questionHTML = `
                 <div class="question">
@@ -44,41 +55,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função para submeter as respostas
-    function submitQuiz() {
-        userAnswers = [];
-        let score = 0;
+    // Função para mostrar o quiz
+    quizButton.addEventListener('click', () => {
+        document.querySelector('section').style.display = 'none';
+        quizSection.style.display = 'block';
+        renderQuiz();
+    });
 
+    // Função para enviar as respostas do quiz
+    function submitQuiz() {
+        let score = 0;
         questions.forEach((q, index) => {
             const selected = document.querySelector(`input[name="question${index}"]:checked`);
             if (selected) {
                 const answer = parseInt(selected.value);
-                userAnswers.push(answer);
                 if (answer === q.answer) {
                     score++;
                 }
-            } else {
-                userAnswers.push(-1); // Nenhuma resposta
             }
         });
 
-        // Exibe o resultado
+        scoreDisplay.innerHTML = `Você acertou ${score} de ${questions.length} perguntas.`;
+        quizResult.style.display = 'block';
+
         if (score === questions.length) {
-            alert("Parabéns! Você acertou todas as perguntas!");
-            confetti.start(); // Confetes para quem acertou tudo
+            showConfetti();
         } else {
-            alert(`Você acertou ${score} de ${questions.length}. Tente novamente!`);
+            alert("Que pena, você errou! Tente novamente!");
         }
     }
 
-    renderQuiz();
+    // Função para mostrar os confetes
+    function showConfetti() {
+        confettiContainer.style.display = 'block';
+        const confetti = new ConfettiGenerator({
+            target: 'confetti',
+            max: 100,
+            size: 1,
+            animate: true,
+            respawn: true
+        });
+        confetti.start();
+        setTimeout(() => {
+            confetti.stop();
+            confettiContainer.style.display = 'none';
+        }, 5000);
+    }
 
-    // Animações de confetes
-    const confetti = new ConfettiGenerator({
-        target: 'confetti-container',
-        max: 100,
-        size: 1,
-        animate: true,
-        respawn: true
-    });
 });

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MotorPower - O Deus dos Motores. Explore os motores e descubra o poder do V4 ao V12 com o brilho celestial de um arcanjo.">
+    <meta name="description" content="MotorPower - O site definitivo para apaixonados por carros. Explore os melhores motores e teste seus conhecimentos.">
     <meta name="author" content="MotorPower">
     <meta property="og:title" content="MotorPower - O Melhor do Mundo Automotivo" />
-    <meta property="og:description" content="Explore os motores mais icônicos e suas características. Descubra o que há de melhor no mundo automotivo." />
+    <meta property="og:description" content="Descubra os motores e carros mais icônicos com MotorPower!" />
     <meta property="og:image" content="link_da_imagem_do_site.jpg" />
     <meta property="og:url" content="https://www.motorspower.com" />
-    <title>MotorPower - O Deus dos Motores</title>
+    <title>MotorPower - O Melhor do Mundo Automotivo</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico">
@@ -25,45 +25,37 @@
                 <li><a href="#v8">V8</a></li>
                 <li><a href="#v10">V10</a></li>
                 <li><a href="#v12">V12</a></li>
-                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#quiz" id="quiz-button">Quiz</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>MotorPower: O Poder dos Motores Celestiais</h1>
-            <p>Entre no mundo dos motores, onde a potência encontra o brilho dourado do universo.</p>
+            <h1>MotorPower: A Força por Trás dos Motores</h1>
+            <p>Explore os melhores motores e carros do mundo, e desafie seu conhecimento com o quiz!</p>
         </div>
     </section>
 
     <section id="sobre" class="section">
-        <h2>Sobre os Motores Celestiais</h2>
-        <p>Explore a magia por trás dos motores V4, V6, V8, V10 e V12 e descubra o que faz cada um ser único e especial.</p>
+        <h2>Sobre os Motores</h2>
+        <p>Do V4 ao V12, entenda os motores que movem o mundo automotivo e o impacto que eles têm nos carros mais potentes do planeta.</p>
     </section>
 
-    <!-- Adicionar carros 3D interativos aqui -->
-    <section id="carros-3d" class="section">
-        <h2>Explore os Carros em 3D</h2>
-        <div id="carro-3d-container">
-            <!-- Aqui você pode carregar o modelo 3D de uma Lamborghini, Ferrari ou outro carro -->
-            <canvas id="car-3d-canvas"></canvas>
-        </div>
-    </section>
-
-    <!-- Quiz -->
-    <section id="quiz" class="section">
-        <h2>Quiz dos Carros Celestiais</h2>
-        <p>Teste seus conhecimentos sobre motores e carros!</p>
+    <section id="quiz" class="section" style="display:none;">
+        <h2>Quiz dos Motores</h2>
         <div id="quiz-container"></div>
         <button id="submit" onclick="submitQuiz()">Enviar Respostas</button>
+        <div id="quiz-result" style="display:none;">
+            <p id="quiz-score"></p>
+            <div id="confetti"></div>
+        </div>
     </section>
 
     <footer>
         <p>&copy; 2024 MotorPower. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script>
     <script src="confetti.min.js"></script>
     <script src="script.js"></script>
 </body>
