@@ -1,80 +1,73 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="O Deus do Mundo Automotivo. Explore os motores e descubra o poder do V4 ao V12 com o brilho celestial de um arcanjo.">
-    <meta name="author" content="MotorPower">
-    <meta property="og:title" content="MotorPower - O Melhor do Mundo Automotivo" />
-    <meta property="og:description" content="Explore os motores mais icônicos e suas características. Descubra o que há de melhor no mundo automotivo." />
-    <meta property="og:image" content="link_da_imagem_do_site.jpg" />
-    <meta property="og:url" content="https://www.motorspower.com" />
-    <title>MotorPower - O Deus dos Motores</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">MotorPower</div>
-            <ul class="nav-links">
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#v4">V4</a></li>
-                <li><a href="#v6">V6</a></li>
-                <li><a href="#v8">V8</a></li>
-                <li><a href="#v10">V10</a></li>
-                <li><a href="#v12">V12</a></li>
-                <li><a href="#comparativo">Comparativo</a></li>
-                <li><a href="#quiz">Quiz</a></li>
-            </ul>
-        </nav>
-    </header>
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializando as animações 3D com Three.js
+    const canvas = document.getElementById('3d-car-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>MotorPower: O Poder dos Motores Celestiais</h1>
-            <p>Entre no mundo dos motores, onde a potência encontra o brilho dourado do universo.</p>
-        </div>
-    </section>
+    const particles = [];
 
-    <section id="sobre" class="section">
-        <h2>Sobre os Motores Celestiais</h2>
-        <p>Descubra o equilíbrio entre potência e eficiência. O V4 ao V12 são os escolhidos pela engenharia divina.</p>
-    </section>
+    function Particle(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 5 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = 'rgba(255, 223, 0, 0.8)';
+    }
 
-    <!-- Seções para V4, V6, etc. -->
-    <section id="v4" class="section motor-section">
-        <h2>Motor V4</h2>
-        <p>Compacto, eficiente, com o toque dourado da perfeição.</p>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/seu_video_v4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
+    Particle.prototype.update = function () {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.1) this.size -= 0.1;
+    };
 
-    <!-- Quiz Interativo e Efeitos -->
-    <section id="quiz" class="section">
-        <h2>Quiz dos Carros Divinos</h2>
-        <p>Teste seus conhecimentos sobre carros e motores no reino celestial dos automóveis!</p>
-        <div id="quiz-container">
-            <button class="quiz-button" onclick="startQuiz()">Começar Quiz</button>
-        </div>
-    </section>
+    Particle.prototype.draw = function () {
+        ctx.fillStyle = this.color;
+        ctx.strokeStyle = 'gold';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    };
 
-    <!-- 3D Car View -->
-    <section id="carro-3d" class="section">
-        <h2>Explore o Carro em 3D</h2>
-        <div id="3d-car-container">
-            <canvas id="3d-car-canvas"></canvas>
-        </div>
-    </section>
+    function animateParticles(e) {
+        const xPos = e.x;
+        const yPos = e.y;
+        for (let i = 0; i < 5; i++) {
+            particles.push(new Particle(xPos, yPos));
+        }
+    }
 
-    <footer>
-        <p>&copy; 2024 MotorPower. Todos os direitos reservados.</p>
-    </footer>
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].size <= 0.2) {
+                particles.splice(i, 1);
+                i--;
+            }
+        }
+        requestAnimationFrame(animate);
+    }
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script> <!-- Biblioteca 3D -->
-    <script src="script.js"></script>
-</body>
-</html>
+    canvas.addEventListener('mousemove', animateParticles);
+    animate();
+
+    // Animando a transição da página
+    gsap.from('.hero-title', {
+        opacity: 0,
+        y: -50,
+        duration: 1.5,
+        delay: 0.5,
+    });
+    gsap.from('.hero-description', {
+        opacity: 0,
+        y: -30,
+        duration: 1.5,
+        delay: 1,
+    });
+});
