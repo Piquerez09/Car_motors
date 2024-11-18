@@ -26,7 +26,7 @@
                 <li><a href="#v10">V10</a></li>
                 <li><a href="#v12">V12</a></li>
                 <li><a href="#comparativo">Comparativo</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="#quiz">Quiz</a></li>
             </ul>
         </nav>
     </header>
@@ -43,7 +43,6 @@
         <p>Esses motores são projetados para balancear potência e eficiência. Cada tipo de motor, de V4 a V12, é uma obra-prima da engenharia automotiva.</p>
     </section>
 
-    <!-- Seção de motores -->
     <section id="v4" class="section motor-section">
         <h2>Motor V4</h2>
         <p>Compacto, eficiente e ideal para carros urbanos.</p>
@@ -52,7 +51,8 @@
         </div>
     </section>
 
-    <section id="v6" class="section motor-section">
+    <!-- Adicionando o efeito Parallax no V6 -->
+    <section id="v6" class="section motor-section parallax">
         <h2>Motor V6</h2>
         <p>Popular em sedãs e carros esportivos, o V6 oferece um ótimo equilíbrio.</p>
         <div class="video-container">
@@ -60,27 +60,11 @@
         </div>
     </section>
 
-    <section id="v8" class="section motor-section">
-        <h2>Motor V8</h2>
-        <p>Potência bruta e desempenho incomparável em carros de luxo e esportivos.</p>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/seu_video_v8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section id="v10" class="section motor-section">
-        <h2>Motor V10</h2>
-        <p>Supercarros e máquinas de corrida possuem esse motor para desempenho extremo.</p>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/seu_video_v10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section id="v12" class="section motor-section">
-        <h2>Motor V12</h2>
-        <p>O motor V12 é o ápice do desempenho automobilístico, usado em supercarros de luxo.</p>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/seu_video_v12" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section id="quiz" class="section">
+        <h2>Quiz dos Motores</h2>
+        <p>Teste seus conhecimentos sobre motores automotivos!</p>
+        <div id="quiz-container">
+            <button class="quiz-button" onclick="startQuiz()">Começar Quiz</button>
         </div>
     </section>
 

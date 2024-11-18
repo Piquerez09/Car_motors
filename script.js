@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Configuração do gráfico
     const ctx = document.getElementById('comparativoGrafico').getContext('2d');
     const comparativoGrafico = new Chart(ctx, {
         type: 'bar',
@@ -32,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const point = comparativoGrafico.getElementAtEvent(e);
                     if (point.length) {
                         e.target.style.cursor = 'pointer';
-                        const motor = point[0].index;
-                        tocarAudio(motor);
+                        tocarAudio(point[0].index);
                     } else {
                         e.target.style.cursor = 'default';
                     }
@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Função para tocar o áudio
     function tocarAudio(motorIndex) {
         const audios = [
             new Audio('audio/v4.mp3'),
@@ -51,5 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             new Audio('audio/v12.mp3')
         ];
         audios[motorIndex].play();
+    }
+
+    // Função para iniciar o quiz
+    function startQuiz() {
+        alert('O quiz está em breve! Fique atento!');
     }
 });

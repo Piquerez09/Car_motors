@@ -104,6 +104,15 @@ header {
     border-radius: 15px;
 }
 
+/* Parallax effect */
+.parallax {
+    background: url('https://www.example.com/parallax-image.jpg') no-repeat fixed center;
+    background-size: cover;
+    color: #fff;
+    padding: 6rem 2rem;
+    animation: fadeIn 2s ease-out;
+}
+
 footer {
     background-color: #222;
     text-align: center;
@@ -121,11 +130,17 @@ footer p {
     100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
+.quiz-button {
+    padding: 1rem 2rem;
+    background-color: #f8b400;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quiz-button:hover {
+    background-color: #e67e22;
 }
