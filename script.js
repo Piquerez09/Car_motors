@@ -1,8 +1,8 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-    // Perguntas e Respostas
+    // Perguntas e Respostas do Quiz
     const questions = [
-        // Suas 30 perguntas aqui
+        // Suas 30 perguntas aqui (mantendo o formato que já definimos)
         {
             question: "Qual é o motor mais comum em carros compactos?",
             options: ["V4", "V6", "V8", "V12"],
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             options: ["V6", "V8", "V10", "V12"],
             answer: 3
         },
-        // Inclua o resto das perguntas aqui
+        // ... outras 27 perguntas aqui
     ];
 
     let userAnswers = [];
@@ -72,4 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderQuiz();
+
+    // Animações de confetes
+    const confetti = new ConfettiGenerator({
+        target: 'confetti-container',
+        max: 100,
+        size: 1,
+        animate: true,
+        respawn: true
+    });
 });
