@@ -45,6 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 question: "Qual carro famoso usa o motor V10?",
                 options: ["Lamborghini Gallardo", "Chevrolet Camaro", "Honda Civic", "BMW X5"],
                 answer: 0
+            },
+            {
+                question: "Qual o motor mais comum em carros de luxo?",
+                options: ["V4", "V6", "V8", "V12"],
+                answer: 1
             }
         ];
 
@@ -57,7 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        alert(`Seu resultado é ${score} de ${questions.length}`);
+        if (score === questions.length) {
+            showConfetti();
+            alert(`Parabéns! Você acertou todas as perguntas.`);
+        } else {
+            alert(`Que pena! Você acertou ${score} de ${questions.length}. Dê uma olhada no site para melhorar seus conhecimentos.`);
+        }
+    }
+
+    // Função de confetes
+    function showConfetti() {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        document.body.appendChild(confetti);
+        setTimeout(() => {
+            confetti.remove();
+        }, 10000); // Confetes por 10 segundos
     }
 
     // Inicia o Quiz
