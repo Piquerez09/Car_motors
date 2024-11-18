@@ -3,54 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore os motores mais poderosos e icônicos do mundo automotivo com modelos 3D e animações impressionantes.">
+    <meta name="description" content="O Deus do Mundo Automotivo. Explore os motores e descubra o poder do V4 ao V12 com o brilho celestial de um arcanjo.">
     <meta name="author" content="MotorPower">
-    <title>MotorPower - O Império dos Supercarros</title>
+    <meta property="og:title" content="MotorPower - O Melhor do Mundo Automotivo" />
+    <meta property="og:description" content="Explore os motores mais icônicos e suas características. Descubra o que há de melhor no mundo automotivo." />
+    <meta property="og:image" content="link_da_imagem_do_site.jpg" />
+    <meta property="og:url" content="https://www.motorspower.com" />
+    <title>MotorPower - O Deus dos Motores</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
-    <!-- Cabeçalho com navegação -->
-    <header class="navbar">
-        <div class="logo">MotorPower</div>
-        <ul class="nav-links">
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#carros">Carros</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-        </ul>
+    <header>
+        <nav class="navbar">
+            <div class="logo">MotorPower</div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#v4">V4</a></li>
+                <li><a href="#v6">V6</a></li>
+                <li><a href="#v8">V8</a></li>
+                <li><a href="#v10">V10</a></li>
+                <li><a href="#v12">V12</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Seção Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>MotorPower: O Império dos Supercarros</h1>
-            <p>Descubra os motores e carros mais poderosos do mundo com visualizações interativas!</p>
+            <h1>MotorPower: O Poder dos Motores Celestiais</h1>
+            <p>Entre no mundo dos motores, onde a potência encontra o brilho dourado do universo.</p>
         </div>
     </section>
 
-    <!-- Seção Carros 3D -->
-    <section id="carros" class="section">
-        <h2>Carros 3D Interativos</h2>
-        <div id="carro-3d-container"></div>
+    <section id="sobre" class="section">
+        <h2>Sobre os Motores Celestiais</h2>
+        <p>Descubra o equilíbrio entre potência e eficiência. O V4 ao V12 são os escolhidos pela engenharia divina.</p>
     </section>
 
-    <!-- Seção Quiz -->
+    <!-- Seções para os motores V4, V6, etc. -->
+    <section id="v4" class="section motor-section">
+        <h2>Motor V4</h2>
+        <p>Compacto e eficiente, o motor V4 é conhecido por sua excelente relação entre desempenho e economia de combustível. Ideal para carros de médio porte e motos.</p>
+    </section>
+
+    <section id="v6" class="section motor-section">
+        <h2>Motor V6</h2>
+        <p>Com seis cilindros dispostos em forma de "V", o motor V6 é utilizado em carros esportivos e sedãs de luxo. Equilíbrio entre potência e consumo de combustível.</p>
+    </section>
+
+    <section id="v8" class="section motor-section">
+        <h2>Motor V8</h2>
+        <p>Potente e robusto, o V8 é o motor favorito de carros de alto desempenho, como muscle cars e supercarros. Aceleração impressionante e grande torque.</p>
+    </section>
+
+    <section id="v10" class="section motor-section">
+        <h2>Motor V10</h2>
+        <p>Utilizado em carros de alta performance como o Lamborghini Gallardo, o motor V10 oferece um equilíbrio entre o V8 e o V12, com grande capacidade de aceleração.</p>
+    </section>
+
+    <section id="v12" class="section motor-section">
+        <h2>Motor V12</h2>
+        <p>O motor V12 é a joia da engenharia automotiva, presente nos supercarros de luxo como Ferrari, Lamborghini e outros. Potência extrema, som inconfundível e aceleração brutal.</p>
+    </section>
+
+    <!-- 3D Car View -->
+    <section id="carro-3d" class="section">
+        <h2>Explore o Carro em 3D</h2>
+        <div id="3d-car-container">
+            <canvas id="3d-car-canvas"></canvas>
+        </div>
+    </section>
+
+    <!-- Quiz Interativo -->
     <section id="quiz" class="section">
-        <h2>Quiz dos Supercarros</h2>
-        <button class="quiz-button" onclick="startQuiz()">Começar Quiz</button>
-        <div id="quiz-feedback"></div>
+        <h2>Quiz dos Carros Divinos</h2>
+        <p>Teste seus conhecimentos sobre carros e motores no reino celestial dos automóveis!</p>
+        <div id="quiz-container">
+            <button class="quiz-button" onclick="startQuiz()">Começar Quiz</button>
+        </div>
     </section>
 
-    <!-- Rodapé -->
     <footer>
         <p>&copy; 2024 MotorPower. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script> <!-- Biblioteca 3D -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.0/dist/confetti.browser.min.js"></script> <!-- Confetti -->
     <script src="script.js"></script>
 </body>
 </html>
