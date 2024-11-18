@@ -1,166 +1,80 @@
-/* Reset básico de estilo */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O Deus do Mundo Automotivo. Explore os motores e descubra o poder do V4 ao V12 com o brilho celestial de um arcanjo.">
+    <meta name="author" content="MotorPower">
+    <meta property="og:title" content="MotorPower - O Melhor do Mundo Automotivo" />
+    <meta property="og:description" content="Explore os motores mais icônicos e suas características. Descubra o que há de melhor no mundo automotivo." />
+    <meta property="og:image" content="link_da_imagem_do_site.jpg" />
+    <meta property="og:url" content="https://www.motorspower.com" />
+    <title>MotorPower - O Deus dos Motores</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">MotorPower</div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#v4">V4</a></li>
+                <li><a href="#v6">V6</a></li>
+                <li><a href="#v8">V8</a></li>
+                <li><a href="#v10">V10</a></li>
+                <li><a href="#v12">V12</a></li>
+                <li><a href="#comparativo">Comparativo</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #1c1c1c;
-    color: #fff;
-}
+    <section class="hero">
+        <div class="hero-content">
+            <h1>MotorPower: O Poder dos Motores Celestiais</h1>
+            <p>Entre no mundo dos motores, onde a potência encontra o brilho dourado do universo.</p>
+        </div>
+    </section>
 
-header {
-    background-color: #222;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 10px 30px rgba(255, 223, 0, 0.3);
-}
+    <section id="sobre" class="section">
+        <h2>Sobre os Motores Celestiais</h2>
+        <p>Descubra o equilíbrio entre potência e eficiência. O V4 ao V12 são os escolhidos pela engenharia divina.</p>
+    </section>
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    <!-- Seções para V4, V6, etc. -->
+    <section id="v4" class="section motor-section">
+        <h2>Motor V4</h2>
+        <p>Compacto, eficiente, com o toque dourado da perfeição.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/seu_video_v4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
 
-.nav-links {
-    display: flex;
-    list-style: none;
-}
+    <!-- Quiz Interativo e Efeitos -->
+    <section id="quiz" class="section">
+        <h2>Quiz dos Carros Divinos</h2>
+        <p>Teste seus conhecimentos sobre carros e motores no reino celestial dos automóveis!</p>
+        <div id="quiz-container">
+            <button class="quiz-button" onclick="startQuiz()">Começar Quiz</button>
+        </div>
+    </section>
 
-.nav-links li {
-    margin-left: 1.5rem;
-}
+    <!-- 3D Car View -->
+    <section id="carro-3d" class="section">
+        <h2>Explore o Carro em 3D</h2>
+        <div id="3d-car-container">
+            <canvas id="3d-car-canvas"></canvas>
+        </div>
+    </section>
 
-.nav-links a {
-    color: #f8b400;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    transition: 0.3s;
-    position: relative;
-}
+    <footer>
+        <p>&copy; 2024 MotorPower. Todos os direitos reservados.</p>
+    </footer>
 
-.nav-links a::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: #f8b400;
-    bottom: -2px;
-    left: 50%;
-    transition: width 0.3s, left 0.3s;
-}
-
-.nav-links a:hover::before {
-    width: 100%;
-    left: 0;
-}
-
-.hero {
-    background-image: url('https://www.example.com/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 8rem 2rem;
-    text-align: center;
-    animation: fadeIn 2s ease-out;
-    box-shadow: 0 0 50px rgba(255, 223, 0, 0.7);
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #f8b400;
-    text-shadow: 2px 2px 8px rgba(255, 223, 0, 0.9);
-}
-
-.hero-content p {
-    font-size: 1.5rem;
-    color: white;
-    margin-top: 1rem;
-}
-
-.section {
-    padding: 4rem 2rem;
-    background-color: #333;
-    border-radius: 10px;
-    margin: 2rem 0;
-    box-shadow: 0 4px 10px rgba(255, 223, 0, 0.3);
-    position: relative;
-}
-
-.motor-section h2 {
-    font-size: 3rem;
-    color: #f8b400;
-    text-align: center;
-    text-shadow: 2px 2px 8px rgba(255, 223, 0, 0.7);
-}
-
-.motor-section p {
-    font-size: 1.1rem;
-    text-align: center;
-    color: #bbb;
-    margin-top: 1rem;
-}
-
-.video-container {
-    margin-top: 3rem;
-    text-align: center;
-}
-
-.video-container iframe {
-    width: 100%;
-    max-width: 800px;
-    height: 450px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(255, 223, 0, 0.7);
-}
-
-/* Efeitos Parallax e brilhos divinos */
-.parallax {
-    background: url('https://www.example.com/parallax-bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    padding: 6rem 2rem;
-    animation: fadeIn 2s ease-out;
-}
-
-.quiz-button {
-    padding: 1.2rem 2.5rem;
-    background-color: #f8b400;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.3rem;
-    color: #333;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(255, 223, 0, 0.6);
-    transition: all 0.4s ease;
-}
-
-.quiz-button:hover {
-    background-color: #e67e22;
-    transform: scale(1.1);
-    box-shadow: 0 8px 30px rgba(255, 223, 0, 0.8);
-}
-
-/* Efeitos Divinos no hover */
-#quiz-container {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-#quiz-container .quiz-button:hover {
-    transform: scale(1.2);
-}
-
-/* Animação de Fade In */
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script> <!-- Biblioteca 3D -->
+    <script src="script.js"></script>
+</body>
+</html>
