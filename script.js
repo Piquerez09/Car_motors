@@ -2,8 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Perguntas e Respostas
     const questions = [
-        // Aqui entram as 30 perguntas como mostrado nos exemplos anteriores
-        // Para simplificação, apenas algumas perguntas estão listadas aqui
+        // Suas 30 perguntas aqui
         {
             question: "Qual é o motor mais comum em carros compactos?",
             options: ["V4", "V6", "V8", "V12"],
@@ -18,14 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
             question: "Qual é o motor mais potente?",
             options: ["V6", "V8", "V10", "V12"],
             answer: 3
-        }
+        },
+        // Inclua o resto das perguntas aqui
     ];
 
     let userAnswers = [];
 
     const quizContainer = document.getElementById('quiz-container');
 
-    // Renderiza o quiz no site
+    // Renderiza as perguntas do quiz
     function renderQuiz() {
         questions.forEach((q, index) => {
             const questionHTML = `
