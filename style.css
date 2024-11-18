@@ -17,6 +17,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 10px 30px rgba(255, 223, 0, 0.3);
 }
 
 .navbar {
@@ -35,17 +36,29 @@ header {
 }
 
 .nav-links a {
-    color: white;
+    color: #f8b400;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    font-size: 1rem;
     transition: 0.3s;
+    position: relative;
 }
 
-.nav-links a:hover {
-    color: #f8b400;
-    transform: scale(1.1);
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #f8b400;
+    bottom: -2px;
+    left: 50%;
+    transition: width 0.3s, left 0.3s;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+    left: 0;
 }
 
 .hero {
@@ -55,6 +68,7 @@ header {
     padding: 8rem 2rem;
     text-align: center;
     animation: fadeIn 2s ease-out;
+    box-shadow: 0 0 50px rgba(255, 223, 0, 0.7);
 }
 
 .hero-content h1 {
@@ -62,6 +76,7 @@ header {
     font-weight: bold;
     text-transform: uppercase;
     color: #f8b400;
+    text-shadow: 2px 2px 8px rgba(255, 223, 0, 0.9);
 }
 
 .hero-content p {
@@ -75,13 +90,15 @@ header {
     background-color: #333;
     border-radius: 10px;
     margin: 2rem 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(255, 223, 0, 0.3);
+    position: relative;
 }
 
 .motor-section h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #f8b400;
     text-align: center;
+    text-shadow: 2px 2px 8px rgba(255, 223, 0, 0.7);
 }
 
 .motor-section p {
@@ -102,51 +119,48 @@ header {
     height: 450px;
     border: none;
     border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 223, 0, 0.7);
 }
 
-/* Parallax effect */
+/* Efeitos Parallax e brilhos divinos */
 .parallax {
     background: url('https://www.example.com/parallax-bg.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     padding: 6rem 2rem;
-}
-
-#quiz-container {
-    text-align: center;
-    margin-top: 3rem;
+    animation: fadeIn 2s ease-out;
 }
 
 .quiz-button {
     padding: 1.2rem 2.5rem;
     background-color: #f8b400;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     font-size: 1.3rem;
     color: #333;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 20px rgba(255, 223, 0, 0.6);
+    transition: all 0.4s ease;
 }
 
 .quiz-button:hover {
     background-color: #e67e22;
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(255, 223, 0, 0.8);
 }
 
-/* 3D Car Container */
-#carro-3d {
-    padding: 4rem 2rem;
+/* Efeitos Divinos no hover */
+#quiz-container {
     text-align: center;
-}
-
-#3d-car-container {
-    width: 100%;
-    height: 500px;
     margin-top: 3rem;
 }
 
-/* Animações */
+#quiz-container .quiz-button:hover {
+    transform: scale(1.2);
+}
+
+/* Animação de Fade In */
 @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
+    0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
 }

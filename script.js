@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Quiz do Carro
+    // Função para iniciar o Quiz
     function startQuiz() {
         alert("Bem-vindo ao quiz! Vamos testar seus conhecimentos sobre carros!");
-
         const questions = [
             {
                 question: "Qual motor é mais usado em carros esportivos?",
@@ -33,82 +32,61 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(`Seu resultado é ${score} de ${questions.length}`);
     }
 
-    // Configuração do gráfico de comparativo
-    const ctx = document.getElementById('comparativoGrafico').getContext('2d');
-    const comparativoGrafico = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['V4', 'V6', 'V8', 'V10', 'V12'],
-            datasets: [{
-                label: 'Potência (cv)',
-                data: [150, 300, 500, 600, 800],
-                backgroundColor: ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'],
-                borderColor: ['#2980b9', '#c0392b', '#27ae60', '#f1c40f', '#8e44ad'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Comparativo de Potência entre os Motores'
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw + ' cv';
-                        }
-                    }
-                }
-            }
-        }
-    });
+    // Efeitos 3D e Interatividade com a Partícula de Ouro
+    const canvas = document.getElementById('3d-car-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    // Função para tocar som do motor
-    function tocarAudio(index) {
-        const audio = [
-            new Audio('audio/v4.mp3'),
-            new Audio('audio/v6.mp3'),
-            new Audio('audio/v8.mp3'),
-            new Audio('audio/v10.mp3'),
-            new Audio('audio/v12.mp3')
-        ];
-        audio[index].play();
+    const particles = [];
+    
+    function Particle(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 5 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = 'rgba(255, 223, 0, 0.8)';
     }
 
-    comparativoGrafico.options.hover.onHover = function(e) {
-        const point = comparativoGrafico.getElementAtEvent(e);
-        if (point.length) {
-            e.target.style.cursor = 'pointer';
-            tocarAudio(point[0].index);
-        } else {
-            e.target.style.cursor = 'default';
-        }
+    Particle.prototype.update = function () {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.1) this.size -= 0.1;
     };
 
-    // 3D Car Viewer
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('3d-car-canvas').appendChild(renderer.domElement);
+    Particle.prototype.draw = function () {
+        ctx.fillStyle = this.color;
+        ctx.strokeStyle = 'gold';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    };
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);  // Para exemplificar
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    camera.position.z = 5;
-
-    function animate() {
-        requestAnimationFrame(animate);
-
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-
-        renderer.render(scene, camera);
+    function animateParticles(e) {
+        const xPos = e.x;
+        const yPos = e.y;
+        for (let i = 0; i < 5; i++) {
+            particles.push(new Particle(xPos, yPos));
+        }
     }
 
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].size <= 0.2) {
+                particles.splice(i, 1);
+                i--;
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    canvas.addEventListener('mousemove', animateParticles);
     animate();
 });
